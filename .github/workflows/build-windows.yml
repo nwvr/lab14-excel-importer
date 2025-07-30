@@ -39,10 +39,26 @@ jobs:
         copy README_Windows.md dist\LAB14_Excel_Importer\
         copy requirements.txt dist\LAB14_Excel_Importer\
     
+    - name: Debug - List dist contents
+      run: |
+        echo "Contents of dist folder:"
+        dir dist
+        echo "Contents of LAB14_Excel_Importer folder:"
+        dir dist\LAB14_Excel_Importer
+    
     - name: Create distribution package
       run: |
         cd dist
         powershell Compress-Archive -Path "LAB14_Excel_Importer" -DestinationPath "LAB14_Excel_Importer_Windows.zip"
+    
+    - name: Debug - List zip contents
+      run: |
+        cd dist
+        powershell "Expand-Archive -Path 'LAB14_Excel_Importer_Windows.zip' -DestinationPath 'temp_extract' -Force"
+        echo "Contents of extracted zip:"
+        dir temp_extract
+        echo "Contents of LAB14_Excel_Importer in zip:"
+        dir temp_extract\LAB14_Excel_Importer
     
     - name: Upload artifacts
       uses: actions/upload-artifact@v4

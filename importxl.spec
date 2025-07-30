@@ -80,9 +80,6 @@ hiddenimports.extend([
 datas = [
     ('static', 'static'),
     ('config', 'config'),
-    ('run_importer.bat', '.'),
-    ('README_Windows.md', '.'),
-    ('requirements.txt', '.'),
 ]
 
 # Create Data directory if it doesn't exist
