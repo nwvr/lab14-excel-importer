@@ -90,6 +90,12 @@ if not os.path.exists('Data'):
         f.write('This directory is for Excel files\n')
 datas.append(('Data', 'Data'))
 
+# Create config directory if it doesn't exist
+if not os.path.exists('config'):
+    os.makedirs('config')
+    with open('config/README.md', 'w') as f:
+        f.write('# Configuration Directory\n\nThis directory stores user preferences.\n')
+
 # Add any additional data files from packages
 datas.extend(collect_data_files('pandas'))
 datas.extend(collect_data_files('openpyxl'))
