@@ -33,11 +33,17 @@ jobs:
       run: |
         pyinstaller importxl.spec
     
-    - name: Copy additional files
+    - name: Copy additional files and directories
       run: |
+        echo "Copying additional files to dist\LAB14_Excel_Importer\"
         copy run_importer.bat dist\LAB14_Excel_Importer\
         copy README_Windows.md dist\LAB14_Excel_Importer\
         copy requirements.txt dist\LAB14_Excel_Importer\
+        echo "Copying directories..."
+        xcopy static dist\LAB14_Excel_Importer\static /E /I /Y
+        xcopy config dist\LAB14_Excel_Importer\config /E /I /Y
+        xcopy Data dist\LAB14_Excel_Importer\Data /E /I /Y
+        echo "Files and directories copied successfully"
     
     - name: Debug - List dist contents
       run: |
@@ -45,6 +51,12 @@ jobs:
         dir dist
         echo "Contents of LAB14_Excel_Importer folder:"
         dir dist\LAB14_Excel_Importer
+        echo "Checking if executable exists:"
+        if exist "dist\LAB14_Excel_Importer\LAB14_Excel_Importer.exe" (
+            echo "EXECUTABLE FOUND!"
+        ) else (
+            echo "EXECUTABLE NOT FOUND!"
+        )
     
     - name: Create distribution package
       run: |

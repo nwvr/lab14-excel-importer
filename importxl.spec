@@ -77,10 +77,7 @@ hiddenimports.extend([
 ])
 
 # Collect data files
-datas = [
-    ('static', 'static'),
-    ('config', 'config'),
-]
+datas = []
 
 # Create Data directory if it doesn't exist
 import os
@@ -88,7 +85,6 @@ if not os.path.exists('Data'):
     os.makedirs('Data')
     with open('Data/README.txt', 'w') as f:
         f.write('This directory is for Excel files\n')
-datas.append(('Data', 'Data'))
 
 # Create config directory if it doesn't exist
 if not os.path.exists('config'):
