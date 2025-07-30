@@ -52,11 +52,11 @@ jobs:
         echo "Contents of LAB14_Excel_Importer folder:"
         dir dist\LAB14_Excel_Importer
         echo "Checking if executable exists:"
-        if exist "dist\LAB14_Excel_Importer\LAB14_Excel_Importer.exe" (
+        if (Test-Path "dist\LAB14_Excel_Importer\LAB14_Excel_Importer.exe") {
             echo "EXECUTABLE FOUND!"
-        ) else (
+        } else {
             echo "EXECUTABLE NOT FOUND!"
-        )
+        }
     
     - name: Create distribution package
       run: |
