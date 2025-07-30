@@ -29,15 +29,15 @@ jobs:
         mkdir -p Data
         echo "This directory is for Excel files" > Data/README.txt
     
+    - name: Build executable
+      run: |
+        pyinstaller importxl.spec
+    
     - name: Copy additional files
       run: |
         copy run_importer.bat dist\LAB14_Excel_Importer\
         copy README_Windows.md dist\LAB14_Excel_Importer\
         copy requirements.txt dist\LAB14_Excel_Importer\
-    
-    - name: Build executable
-      run: |
-        pyinstaller importxl.spec
     
     - name: Create distribution package
       run: |
