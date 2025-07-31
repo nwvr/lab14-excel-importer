@@ -76,4 +76,28 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: LAB14_Excel_Importer_Windows
-        path: dist/LAB14_Excel_Importer_Windows.zip 
+        path: dist/LAB14_Excel_Importer_Windows.zip
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: dist/LAB14_Excel_Importer_Windows.zip
+        title: LAB14 Excel Importer ${{ github.ref_name }}
+        body: |
+          ## LAB14 Excel Importer
+          
+          Windows executable for importing Excel files to SQLite databases.
+          
+          ### Features:
+          - Web-based interface
+          - Interactive column mapping
+          - Currency and date handling
+          - Database viewer and export
+          
+          ### Installation:
+          1. Download and extract the zip file
+          2. Run `run_importer.bat`
+          3. Open http://localhost:5666 in your browser
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
